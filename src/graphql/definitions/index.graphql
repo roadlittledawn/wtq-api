@@ -1,0 +1,13 @@
+# import Query.*, Mutation.*, * from 'part-of-speech.graphql'
+# import Query.*, Mutation.*, * from 'etymology.graphql'
+# import Query.*, Mutation.*, * from 'word.graphql'
+# import Query.*, Mutation.*, * from 'phrase.graphql'
+# import Query.*, Mutation.*, * from 'topic.graphql'
+# import Query.*, Mutation.*, * from 'quote.graphql'
+# import Query.*, Mutation.*, * from 'author.graphql'
+# import Query.*, Mutation.*, * from 'context.graphql'
+# import Query.*, Mutation.*, * from 'tone.graphql'
+
+type Query {
+  ping: String!
+}

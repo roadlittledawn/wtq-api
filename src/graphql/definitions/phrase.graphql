@@ -1,0 +1,66 @@
+type Query {
+  phrase(input: PhraseInput!): Phrase
+  allPhrases: [Phrase]
+  phraseBySlug(input: PhraseBySlugInput!): Phrase
+  phrasesByCategory(input: PhrasesByCategoryInput!): [Phrase]
+}
+
+type Mutation {
+  createPhrase(input: CreatePhraseInput!): Phrase!
+  updatePhrase(input: UpdatePhraseInput!): Phrase!
+  deletePhrase(input: DeletePhraseInput!): Boolean!
+}
+
+type Phrase {
+  id: String!
+  name: String!
+  slug: String!
+  definition: String!
+  topics: [Topic]
+  tones: [Tone]
+  contexts: [Context]
+  note: String
+  source: String
+}
+
+input PhraseInput {
+  id: String!
+}
+
+input PhraseBySlugInput {
+  slug: String!
+}
+
+input PhrasesByCategoryInput {
+  fieldName: String!
+  id: String!
+}
+
+input CreatePhraseInput {
+  name: String!
+  definition: String
+  topicIds: [String]
+  toneIds: [String]
+  contextIds: [String]
+  note: String
+  source: String
+}
+
+input UpdatePhraseInput {
+  id: String!
+  payload: UpdatePhrasePayload!
+}
+
+input UpdatePhrasePayload {
+  name: String
+  definition: String
+  topicIds: [String]
+  toneIds: [String]
+  contextIds: [String]
+  note: String
+  source: String
+}
+
+input DeletePhraseInput {
+  id: String!
+}

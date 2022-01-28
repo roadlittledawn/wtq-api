@@ -1,0 +1,66 @@
+type Query {
+  quote(input: QuoteInput!): Quote
+  allQuotes: [Quote]
+  quoteBySlug(input: QuoteBySlugInput!): Quote
+  quotesByCategory(input: QuotesByCategoryInput!): [Quote]
+}
+
+type Mutation {
+  createQuote(input: CreateQuoteInput!): Quote!
+  updateQuote(input: UpdateQuoteInput!): Quote!
+  deleteQuote(input: DeleteQuoteInput!): Boolean!
+}
+
+type Quote {
+  id: String!
+  name: String!
+  slug: String!
+  body: String!
+  author: Author
+  topics: [Topic]
+  tones: [Tone]
+  note: String
+  source: String
+}
+
+input QuoteInput {
+  id: String!
+}
+
+input QuoteBySlugInput {
+  slug: String!
+}
+
+input QuotesByCategoryInput {
+  fieldName: String!
+  id: String!
+}
+
+input CreateQuoteInput {
+  name: String!
+  body: String!
+  authorId: String!
+  note: String
+  topicIds: [String]
+  toneIds: [String]
+  source: String
+}
+
+input UpdateQuoteInput {
+  id: String!
+  payload: UpdateQuotePayload!
+}
+
+input UpdateQuotePayload {
+  name: String
+  body: String
+  authorId: String
+  topicIds: [String]
+  toneIds: [String]
+  note: String
+  source: String
+}
+
+input DeleteQuoteInput {
+  id: String!
+}

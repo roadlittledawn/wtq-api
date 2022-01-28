@@ -1,0 +1,66 @@
+type Query {
+  word(input: WordInput!): Word
+  allWords: [Word]
+  wordBySlug(input: WordBySlugInput!): Word
+  wordsByCategory(input: WordsByCategoryInput!): [Word]
+}
+
+type Mutation {
+  createWord(input: CreateWordInput!): Word!
+  updateWord(input: UpdateWordInput!): Word!
+  deleteWord(input: DeleteWordInput!): Boolean!
+}
+
+type Word {
+  id: String!
+  name: String!
+  slug: String!
+  definition: String!
+  note: String
+  partsOfSpeech: [PartOfSpeech]
+  etymologies: [Etymology]
+  contexts: [Context]
+  tones: [Tone]
+}
+
+input WordInput {
+  id: String!
+}
+
+input WordBySlugInput {
+  slug: String!
+}
+
+input WordsByCategoryInput {
+  fieldName: String!
+  id: String!
+}
+
+input CreateWordInput {
+  name: String!
+  definition: String!
+  note: String
+  partOfSpeechIds: [String]
+  etymologyIds: [String]
+  contextIds: [String]
+  toneIds: [String]
+}
+
+input UpdateWordInput {
+  id: String!
+  payload: UpdateWordPayload!
+}
+
+input UpdateWordPayload {
+  name: String
+  definition: String
+  note: String
+  partOfSpeechIds: [String]
+  etymologyIds: [String]
+  contextIds: [String]
+  toneIds: [String]
+}
+
+input DeleteWordInput {
+  id: String!
+}

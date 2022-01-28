@@ -1,0 +1,25 @@
+{
+  "name": "wtq-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "develop": "NODE_ENV=development node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-core": "^3.6.2",
+    "apollo-server-express": "^3.6.2",
+    "deep-assign": "^3.0.0",
+    "dotenv": "^14.2.0",
+    "express": "^4.17.2",
+    "graphql": "^16.2.0",
+    "graphql-import": "^1.0.2",
+    "graphql-tools": "^8.2.0",
+    "http": "^0.0.1-security",
+    "mongoose": "^6.1.7",
+    "slug": "^0.9.3"
+  }
+}
