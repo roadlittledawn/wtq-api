@@ -1,11 +1,16 @@
-const app = require('./app');
-const db = require('./connections/db');
+const app = require("./app");
+const db = require("./connections/db");
 
 const { log } = console;
 
-db.then((mongoose) => {
-  log(`> Successfully connected to ${mongoose.client.s.url}`);
+db.on("connected", (conn) => {
+  log(`> Successfully connected to db`);
   app.listen(80, () => {
-    log('> Ready on http://localhost:8001/graphql');
+    log("> Ready on http://localhost:8001/graphql");
   });
-}).catch(e => setImmediate(() => { throw e; }));
+});
+
+db.on("error", (err) => {
+  log(`> Error connecting to db`);
+  throw new Error(err);
+});
