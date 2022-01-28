@@ -6,6 +6,7 @@ const schema = require("../graphql/schema");
 
 const { NODE_ENV } = process.env;
 const isProduction = NODE_ENV === "production";
+const port = process.env.PORT || 4000;
 
 async function startApolloServer() {
   const app = express();
@@ -18,7 +19,9 @@ async function startApolloServer() {
 
   await server.start();
   server.applyMiddleware({ app });
-  await new Promise((resolve) => httpServer.listen({ port: 4000 }, resolve));
-  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
+  await new Promise((resolve) => httpServer.listen({ port: port }, resolve));
+  console.log(
+    `🚀 Server ready at http://localhost:${port}${server.graphqlPath}`
+  );
 }
 module.exports = startApolloServer;
