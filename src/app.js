@@ -1,8 +1,5 @@
-const express = require('express');
-const graphql = require('./routes/graphql');
+const startApolloServer = require("./routes/graphql");
 
-const app = express();
-
-app.use('/graphql', graphql);
+const app = startApolloServer;
 
 module.exports = app;

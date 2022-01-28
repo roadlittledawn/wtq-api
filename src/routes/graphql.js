@@ -1,13 +1,13 @@
-const { ApolloServer } = "apollo-server-express";
-const { ApolloServerPluginDrainHttpServer } = "apollo-server-core";
-const express = "express";
-const http = "http";
+const { ApolloServer } = require("apollo-server-express");
+const { ApolloServerPluginDrainHttpServer } = require("apollo-server-core");
+const express = require("express");
+const http = require("http");
 const schema = require("../graphql/schema");
 
 const { NODE_ENV } = process.env;
 const isProduction = NODE_ENV === "production";
 
-async function startApolloServer(typeDefs, resolvers) {
+async function startApolloServer() {
   const app = express();
   const httpServer = http.createServer(app);
   const server = new ApolloServer({

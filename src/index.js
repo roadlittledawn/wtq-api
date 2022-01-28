@@ -5,9 +5,7 @@ const { log } = console;
 
 db.on("connected", (conn) => {
   log(`> Successfully connected to db`);
-  app.listen(80, () => {
-    log("> Ready on http://localhost:8001/graphql");
-  });
+  app();
 });
 
 db.on("error", (err) => {
